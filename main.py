@@ -1,44 +1,32 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi import FastAPI, Path, Query
 
-
-class User(BaseModel):
-    email: str
-    is_active: bool
-
-
-app = FastAPI()
-
-users: list[User] = [
+meta_tags = [
     {
-        'email': 'rh@mail.io',
-        'is_active': True
+        'name': 'Users',
+        'description': 'Operations with users. The **Login** logic is also here.'
     },
     {
-        'email': 'lm@mail.io',
-        'is_active': True
-    },
-    {
-        'email': 'rp@mail.io',
-        'is_active': True
-    },
-    {
-        'email': 'em@mail.io',
-        'is_active': True
+        'name': 'Items',
+        'description': 'Operations with users. The **Login** logic is also here.',
+        'externalDocs': {
+            'description': 'Items External Docs',
+            'url': 'http://www.example.com'
+        }
     },
 ]
 
-
-@app.get('/users')
-async def get_user():
-    return users
-
-
-@app.post('/users')
-async def create_user(user: User):
-    users.append(user)
-    message =  {
-        'message': 'Success',
-        **user
-    }
-    return message
+app = FastAPI(
+    title='Medical Soft',
+    description='Inicio de Application Medical Soft',
+    version='0.0.1',
+    terms_of_service='http://www.example.com',
+    contact={
+        'name': 'LeSavantR',
+        'url': 'https://www.lesavant.dev',
+        'email': 'uniruben22@gmail.com'
+    },
+    license_info={
+        'name': 'MIT License',
+    },
+    openapi_tags=meta_tags
+)
