@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from uvicorn import run
 
 from routes.users import router as user_router
 from routes.sections import router as section_router
@@ -36,9 +37,14 @@ app = FastAPI(
     license_info={
         'name': 'MIT License',
     },
-    openapi_tags=meta_tags
+    openapi_tags=meta_tags,
+    debug=True
 )
 
 app.include_router(router=courses_router)
 app.include_router(router=section_router)
 app.include_router(router=user_router)
+
+
+if __name__ == '__main__':
+    run('main:app', log_level='info', reload=True)

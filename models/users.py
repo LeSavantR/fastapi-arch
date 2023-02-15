@@ -12,6 +12,7 @@ class User(Base):
         - Is_Active.
         - Bio.
     """
+    __tablename__ = 'users'
     email: str = Field(
         title='Email',
     )

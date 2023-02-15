@@ -2,9 +2,12 @@ from datetime import datetime
 from typing import Optional
 from uuid import UUID, uuid4
 
-from db.db_setup import _Base
+from pydantic import Field, BaseModel
 
-class Base(_Base):
+from database.db_setup import _Base
+
+
+class Base(BaseModel):
     """
         Base Model:
         - ID.
