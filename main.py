@@ -1,17 +1,25 @@
-from fastapi import FastAPI, Path, Query
+from fastapi import FastAPI
+
+from routes.users import router as user_router
+from routes.sections import router as section_router
+from routes.courses import router as courses_router
 
 meta_tags = [
     {
-        'name': 'Users',
-        'description': 'Operations with users. The **Login** logic is also here.'
-    },
-    {
-        'name': 'Items',
-        'description': 'Operations with users. The **Login** logic is also here.',
+        'name': 'Courses',
+        'description': 'Operations with courses.',
         'externalDocs': {
-            'description': 'Items External Docs',
+            'description': 'Courses External Docs',
             'url': 'http://www.example.com'
         }
+    },
+    {
+        'name': 'Sections',
+        'description': 'Operations with sections.'
+    },
+    {
+        'name': 'Users',
+        'description': 'Operations with users. The **Login** logic is also here.'
     },
 ]
 
@@ -30,3 +38,7 @@ app = FastAPI(
     },
     openapi_tags=meta_tags
 )
+
+app.include_router(router=courses_router)
+app.include_router(router=section_router)
+app.include_router(router=user_router)

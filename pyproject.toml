@@ -11,6 +11,8 @@ python = "^3.10"
 uvicorn = "^0.20.0"
 fastapi = "^0.92.0"
 pydantic = "^1.10.4"
+sqlalchemy = "^2.0.3"
+psycopg2-binary = "^2.9.5"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "^2.0.1"

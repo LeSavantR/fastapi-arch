@@ -24,7 +24,7 @@ async def create_user(user: User) -> dict[str, str]:
     return message
 
 
-@router.get('{id}')
+@router.get('/{id}')
 async def get_user(id: UUID):
     user = next((user for user in users if user.id == id), None)
     return user
