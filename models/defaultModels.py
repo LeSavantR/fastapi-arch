@@ -4,8 +4,6 @@ from uuid import UUID, uuid4
 
 from pydantic import Field, BaseModel
 
-from database.db_setup import _Base
-
 
 class Base(BaseModel):
     """
