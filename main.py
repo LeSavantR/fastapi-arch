@@ -25,13 +25,13 @@ meta_tags = [
 ]
 
 app = FastAPI(
-    title='Medical Soft',
-    description='Inicio de Application Medical Soft',
+    title='API-Users',
+    description='Users API Interface.',
     version='0.0.1',
     terms_of_service='http://www.example.com',
     contact={
         'name': 'LeSavantR',
-        'url': 'https://www.lesavant.dev',
+        'url': 'http://www.example.com',
         'email': 'uniruben22@gmail.com'
     },
     license_info={
@@ -47,4 +47,8 @@ app.include_router(router=user_router)
 
 
 if __name__ == '__main__':
-    run('main:app', log_level='info', reload=True)
+    run(
+        app='main:app', host='0.0.0.0', port=8000,
+        log_level='info', reload=True,
+        # workers=2
+    )

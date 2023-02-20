@@ -1,0 +1,41 @@
+version: '2.16.0'
+
+services:
+
+    proxy:
+        image: traefik:v2.9
+        container_name: proxy
+        ports:
+            - 80:80
+            - 8080:8080
+            # - 443:443
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        depends_on:
+            - app
+        restart: always
+
+    app:
+        build: .
+        container_name: app
+        ports:
+            - 80:80
+        environment:
+            db: postgres
+            user: fastArch
+            password: 220914Admin
+            access_db: datavol
+        # labels:
+        #     - "traefik.http.routers.app.rule=Host(`local.env.dev`)"
+        depends_on:
+            - database
+        restart: always
+
+    database:
+        image: postgres:15.1-alpine3.17
+        container_name: database
+        environment:
+            POSTGRES_USER: fastArch
+            POSTGRES_PASSWORD: 220914Admin
+            POSTGRES_DB: datavol
+        restart: always

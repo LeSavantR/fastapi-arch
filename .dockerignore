@@ -1,0 +1,12 @@
+# Folders
+__pycache__/
+venv/
+
+# Files
+.gitignore
+*.lock
+*.toml
+*.md
+*.yaml
+*.yml
+Dockerfile
