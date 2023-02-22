@@ -18,6 +18,3 @@ class Base(_Base):
         name='ID', index=True,
         primary_key=True
     )
-    created_at = Column(
-        DateTime(True), default=datetime.utcnow
-    )
